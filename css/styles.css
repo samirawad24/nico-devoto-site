@@ -369,6 +369,14 @@ em { font-style: italic; }
 }
 .about-facts strong { font-weight: 500; letter-spacing: 0.05em; }
 .about-facts span { color: var(--ink-faint); text-align: right; }
+.about-subhead {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+.about-facts--training { margin-top: 0; }
 
 /* ---------- Featured Work ---------- */
 .work { background: var(--bg-raised); }
