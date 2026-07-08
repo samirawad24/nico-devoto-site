@@ -173,10 +173,34 @@ em { font-style: italic; }
     linear-gradient(to right, rgba(10,10,12,0.72), rgba(10,10,12,0.2) 65%, rgba(10,10,12,0.05)),
     linear-gradient(to bottom, rgba(10,10,12,0.6) 0%, rgba(10,10,12,0.3) 35%, rgba(10,10,12,0.55) 70%, var(--bg) 100%);
 }
+.hero-portrait {
+  position: absolute;
+  bottom: 0;
+  right: clamp(1rem, 20vw, 20rem);
+  z-index: 1;
+  height: min(86svh, 860px);
+  pointer-events: none;
+  /* soften the sides so he dissolves into the frame */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 94%, rgba(0,0,0,0.35) 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 94%, rgba(0,0,0,0.35) 100%);
+}
+.hero-portrait img {
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
+  /* emerge from the shadows: fade out toward the bottom */
+  -webkit-mask-image: linear-gradient(to top, transparent 2%, rgba(0,0,0,0.85) 16%, #000 30%);
+  mask-image: linear-gradient(to top, transparent 2%, rgba(0,0,0,0.85) 16%, #000 30%);
+}
+.hero-portrait.reveal { transform: translateY(34px); transition-duration: 1.3s; }
+.hero-portrait.reveal.visible { transform: none; }
+
 .hero-content {
   position: relative;
   z-index: 2;
   padding: 0 clamp(1.25rem, 6vw, 6rem);
+  margin-left: clamp(0rem, 15vw, 14rem);
   max-width: 1100px;
 }
 .hero-kicker {
@@ -642,6 +666,8 @@ em { font-style: italic; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .hero-portrait { height: min(72svh, 640px); right: clamp(0rem, 3vw, 2rem); }
+  .hero-content { margin-left: 0; }
   .about-grid { grid-template-columns: 1fr; }
   .about-photo { max-width: 480px; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -659,6 +685,15 @@ em { font-style: italic; }
   .why-grid { grid-template-columns: 1fr; }
   .hero-foot { justify-content: center; }
   .hero-foot-item:last-child { display: none; }
+  /* phone: center him behind the name, dimmed so text stays readable */
+  .hero-portrait {
+    right: 50%;
+    transform: translateX(50%);
+    height: min(76svh, 560px);
+  }
+  .hero-portrait.reveal { transform: translateX(50%) translateY(34px); }
+  .hero-portrait.reveal.visible { transform: translateX(50%); }
+  .hero-portrait img { filter: grayscale(1) contrast(1.05) brightness(0.5); }
   .media-card--feature .media-frame video { aspect-ratio: 16 / 10; }
   .about-facts li { flex-direction: column; gap: 0.15rem; }
   .about-facts span { text-align: left; }
