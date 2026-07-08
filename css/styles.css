@@ -382,7 +382,7 @@ em { font-style: italic; }
 .work { background: var(--bg-raised); }
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 .media-card--feature { grid-column: 1 / -1; }
@@ -648,6 +648,7 @@ em { font-style: italic; }
   .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .section-head { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
   .section-note { text-align: left; max-width: none; }
+  .work-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
