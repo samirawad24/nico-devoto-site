@@ -685,15 +685,18 @@ em { font-style: italic; }
   .why-grid { grid-template-columns: 1fr; }
   .hero-foot { justify-content: center; }
   .hero-foot-item:last-child { display: none; }
-  /* phone: center him behind the name, dimmed so text stays readable */
+  /* phone: poster stack — text on top, Nico below it, no overlap */
+  .hero { justify-content: flex-start; padding-top: 6.5rem; }
   .hero-portrait {
-    right: 50%;
-    transform: translateX(50%);
-    height: min(76svh, 560px);
+    position: relative;
+    order: 3;
+    right: auto;
+    bottom: auto;
+    height: auto;
+    width: min(80vw, 340px);
+    margin: 1rem auto 0;
   }
-  .hero-portrait.reveal { transform: translateX(50%) translateY(34px); }
-  .hero-portrait.reveal.visible { transform: translateX(50%); }
-  .hero-portrait img { filter: grayscale(1) contrast(1.05) brightness(0.5); }
+  .hero-portrait img { width: 100%; height: auto; filter: grayscale(1) contrast(1.05) brightness(0.92); }
   .media-card--feature .media-frame video { aspect-ratio: 16 / 10; }
   .about-facts li { flex-direction: column; gap: 0.15rem; }
   .about-facts span { text-align: left; }
